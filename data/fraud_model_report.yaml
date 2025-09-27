@@ -1,0 +1,80 @@
+meta:
+  generated_at: '2025-09-27T19:08:11.239764'
+  using_sample: false
+features:
+- amount
+- log_amount
+- amount_over_oldOrg
+- amount_over_oldDest
+- orig_balances_zero
+- dest_balances_zero
+- errorBalanceOrig
+- errorBalanceDest
+- dest_is_merchant
+- orig_is_merchant
+- type_code
+- hour
+- day
+- transfer_to_cashout_48h
+metrics:
+  LR:
+    roc_auc: 0.9815419142450639
+    pr_auc: 0.634681219138337
+  RF:
+    roc_auc: 0.9999999996825729
+    pr_auc: 0.9999999503196484
+thresholds:
+  target_precision: 0.9
+  LR_minP:
+    t: 0.9999129115006471
+    recall: 0.44761480160499334
+  RF_minP:
+    t: 0.04312611098463275
+    recall: 1.0
+  LR_min_cost:
+    t: 0.67189817578965
+    cost: 206128288.0
+    FN: 926
+    FP: 17537
+  RF_min_cost:
+    t: 0.039629426124881406
+    cost: 3207343.25
+    FN: 0
+    FP: 2600
+  LR_segmented:
+    '[0,1000)':
+      t: 0.5
+      recall_at_minP: 0.0
+      n: 2052
+    '[1000,10000)':
+      t: 0.5
+      recall_at_minP: 0.0
+      n: 18315
+    '[10000,100000)':
+      t: 0.5
+      recall_at_minP: 0.0
+      n: 194928
+    '[100000,inf)':
+      t: 0.9999129115006471
+      recall_at_minP: 0.557004160887656
+      n: 491449
+  RF_segmented:
+    '[0,1000)':
+      t: 0.08140754143894681
+      recall_at_minP: 1.0
+      n: 2052
+    '[1000,10000)':
+      t: 0.05608589959400678
+      recall_at_minP: 1.0
+      n: 18315
+    '[10000,100000)':
+      t: 0.04640562488548116
+      recall_at_minP: 1.0
+      n: 194928
+    '[100000,inf)':
+      t: 0.038474365835976986
+      recall_at_minP: 1.0
+      n: 491449
+  cost_factors:
+    FN: 1.0
+    FP: 0.02
